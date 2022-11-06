@@ -1,7 +1,7 @@
 '''ИГРА "КРЕСТИКИ-НОЛИКИ"
  НАПИСАЛ SLAVIK'''
 
-znach = ['', '0', '1', '2', '00', '01', '02', '10', '11', '12', '20', '21', '22']
+znach = ['00', '01', '02', '10', '11', '12', '20', '21', '22']
 X, O, NOUP = 'X', 'O', ' '
 
 def base():
@@ -23,7 +23,7 @@ def base():
             print(f'Выиграл {firstPl}!')
             break
 
-        elif boardfull(board):
+        elif bfull(board):
             print(boardstr(board))
             print(f'Победила дружба, ничья!')
             break
@@ -34,7 +34,7 @@ def base():
 
 
 
-def boardnoup(): # все клети пустые
+def boardnoup(): # все ячейки пустые
     b = {}
     for i in znach:
         b[i] = NOUP
@@ -53,11 +53,12 @@ def boardstr(b): # создание игрового поля в виде тек
 def valid(b, i): # допуск хода, если в допустимом номере пустая ячейка
     return i in znach and b[i] == NOUP
 
-def boardfull(b):  # при заполнении всех клеток
+def bfull(b):  # при заполнении всех клеток
     for i in znach:
         if b[i] == NOUP:
             return False
     return True
+
 
 def win(b, p): # выигрышные значения
     return (p == b['00'] == b['11'] == b['22']) or \
@@ -73,6 +74,7 @@ def update(b, i, a): # присваивание значений на поле
     b[i] = a
 
 base()
+
 
 
 
